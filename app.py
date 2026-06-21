@@ -25,19 +25,31 @@ st.write("### 📋 Registro Diario de Sesión")
 # Recuerda poner cada nombre entre comillas y separados por una coma (,).
 plantel_bolivar = [
     "Carlos Lampe",
-    "Rubén Cordano",
+    "Diego mendez",
     "Leonel Justiniano", 
-    "Ramiro Vaca", 
-    "Bruno Sávio", 
+    "juan jose lopez", 
+    "santiago echeverria", 
     "Patito Rodríguez",
     "Jesús Sagredo",
     "José Sagredo",
-    "Yomar Rocha",
+    "xavier arreaga",
     "Luis Paz",
-    "Fernando Saucedo",
+    "Fernando mena",
     "Ervin Vaca",
-    "Carmelo Algarañaz",
-    "Lucas Chávez"
+    "escleison freita",
+    "Lucas Chávez",
+    "carlos melgar",
+    "robson matheus",
+    "erwin saavedra",
+    "martin cauteruccio",
+    "dorni romero",
+    "Jhon garcia",
+    "carlos sejas",
+    "cristian lopez",
+    "jhon velazquez",
+    "jesus velasquez",
+    "matias galindo",
+    "heiden butron",
 ]
 
 jugador = st.selectbox("Selecciona el Jugador:", sorted(plantel_bolivar))
