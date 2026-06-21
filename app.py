@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
+import requests
+import json
 from datetime import datetime
-# Importamos la conexión a Google Sheets
-from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(page_title="Club Bolívar - RPE", page_icon="⚽", layout="centered")
 
@@ -15,14 +15,6 @@ with col_centro:
 st.markdown("<h1 style='text-align: center;'>Club Bolívar</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center; color: #85C1E9;'>Control de Carga Interna (RPE)</h3>", unsafe_allow_html=True)
 st.markdown("---")
-
-# --- CONEXIÓN A GOOGLE SHEETS ---
-try:
-    conn = st.connection("gsheets", type=GSheetsConnection)
-    # Leemos los datos existentes
-    df_existente = conn.read(ttl=0)
-except Exception as e:
-    df_existente = pd.DataFrame(columns=["Fecha", "Jugador", "Duracion", "RPE", "Carga"])
 
 # --- REGISTRO DIARIO ---
 st.write("### 📋 Registro Diario de Sesión")
@@ -41,26 +33,27 @@ rpe = st.slider("RPE (Esfuerzo Percibido 0 al 10):", 0, 10, 5)
 carga = duracion * rpe
 fecha_hoy = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-if st.button("💾 Guardar Datos"):
-    # Creamos la nueva fila con los datos ingresados
-    nueva_fila = pd.DataFrame([{
-        "Fecha": fecha_hoy,
-        "Jugador": jugador,
-        "Duracion": duracion,
-        "RPE": rpe,
-        "Carga": carga
-    }])
-    
-    # Combinamos los datos viejos con los nuevos
-    df_actualizado = pd.concat([df_existente, nueva_fila], ignore_index=True)
-    
-    # Mandamos todo de vuelta a tu Google Sheets
-    conn.update(data=df_actualizado)
-    
-    st.success(f"¡Registrado con éxito! Carga de la sesión para {jugador}: {carga} UA")
-    st.balloons()
+# 🔗 AQUÍ PEGA TU ENLACE DE GOOGLE APPS SCRIPT
+WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec"
 
-st.markdown("---")
-st.write("### 📊 Historial de Cargas Registradas")
-# Mostramos la tabla real de lo que se va guardando en tu Google Sheets
-st.dataframe(df_existente)
+if st.button("💾 Guardar Datos"):
+    if WEBHOOK_URL == "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec":
+        st.error("Por favor, pon el enlace real de Google Apps Script en la línea 39.")
+    else:
+        datos_sesion = {
+            "Fecha": fecha_hoy,
+            "Jugador": jugador,
+            "Duracion": int(duracion),
+            "RPE": int(rpe),
+            "Carga": int(carga)
+        }
+        
+        try:
+            response = requests.post(WEBHOOK_URL, data=json.dumps(datos_sesion))
+            if response.status_code == 200:
+                st.success(f"¡Registrado con éxito! Carga para {jugador}: {carga} UA")
+                st.balloons()
+            else:
+                st.error("Error al conectar con la base de datos.")
+        except Exception as e:
+            st.error(f"Error de conexión: {e}")
