@@ -37,8 +37,7 @@ fecha_hoy = datetime.now().strftime("%Y-%m-%d %H:%M")
 WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec
 
 if st.button("💾 Guardar Datos"):
-    if WEBHOOK_URL == "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec":
-        st.error("Por favor, pon el enlace real de Google Apps Script en la línea 39.")
+    if WEBHOOK_URL == "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec")
     else:
         datos_sesion = {
             "Fecha": fecha_hoy,
