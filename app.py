@@ -6,7 +6,7 @@ st.set_page_config(page_title="Club Bolívar - RPE", page_icon="⚽", layout="ce
 
 # --- ESCUDO Y TÍTULO ---
 # Cambiado a un servidor de imágenes ultra estable para que cargue sin problemas
-url_escudo = "https://i.postimg.cc/mDZHwZby/Club-Bolivar-Logo.png"
+url_escudo = "https://raw.githubusercontent.com/walterpfnal-max/carga-bol-var/main/escudo.png"
 
 col1, col2 = st.columns([1, 4])
 with col1:
