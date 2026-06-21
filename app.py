@@ -10,9 +10,8 @@ st.set_page_config(page_title="Club Bolívar - RPE", page_icon="⚽", layout="ce
 WEBHOOK_URL = "https://script.google.com/macros/s/AKfycybyh7V7fAAn17L_ACuQ04Cg_Z-1kWIH8T1AaELuvAZ-LR8BGPH8_L2Kp51_NmT7B8lR5tQ/exec"
 
 # Encabezado de la App
-st.markdown("<h1 style='text-align: center;'>🔵 Club Bolívar 🔵</h1>", unsafe_url_allowed=True)
-st.markdown("<h3 style='text-align: center;'>Control de Carga Interna (RPE)</h3>", unsafe_url_allowed=True)
-
+st.markdown("<h1 style='text-align: center;'>🔵 Club Bolívar 🔵</h1>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Control de Carga Interna (RPE)</h3>", unsafe_allow_html=True)
 st.markdown("---")
 
 st.subheader("📋 Registro Diario de Sesión")
