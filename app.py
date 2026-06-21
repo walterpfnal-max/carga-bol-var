@@ -34,7 +34,7 @@ carga = duracion * rpe
 fecha_hoy = datetime.now().strftime("%Y-%m-%d %H:%M")
 
 # 🔗 AQUÍ PEGA TU ENLACE DE GOOGLE APPS SCRIPT
-WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec"
+WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec
 
 if st.button("💾 Guardar Datos"):
     if WEBHOOK_URL == "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec":
