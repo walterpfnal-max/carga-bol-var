@@ -35,24 +35,21 @@ fecha_hoy = datetime.now().strftime("%Y-%m-%d %H:%M")
 
 # 🔗 AQUÍ PEGA TU ENLACE DE GOOGLE APPS SCRIPT
 WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec"
-
 if st.button("💾 Guardar Datos"):
-    if WEBHOOK_URL == "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec")
-    else:
-        datos_sesion = {
-            "Fecha": fecha_hoy,
-            "Jugador": jugador,
-            "Duracion": int(duracion),
-            "RPE": int(rpe),
-            "Carga": int(carga)
-        }
-        
-        try:
-            response = requests.post(WEBHOOK_URL, data=json.dumps(datos_sesion))
-            if response.status_code == 200:
-                st.success(f"¡Registrado con éxito! Carga para {jugador}: {carga} UA")
-                st.balloons()
-            else:
-                st.error("Error al conectar con la base de datos.")
-        except Exception as e:
-            st.error(f"Error de conexión: {e}")
+    datos_sesion = {
+        "Fecha": fecha_hoy,
+        "Jugador": jugador,
+        "Duracion": int(duracion),
+        "RPE": int(rpe),
+        "Carga": int(carga)
+    }
+    
+    try:
+        response = requests.post(WEBHOOK_URL, data=json.dumps(datos_sesion))
+        if response.status_code == 200:
+            st.success(f"¡Registrado con éxito! Carga para {jugador}: {carga} UA")
+            st.balloons()
+        else:
+            st.error("Error al conectar con la base de datos.")
+    except Exception as e:
+        st.error(f"Error de conexión: {e}")
