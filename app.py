@@ -1,62 +1,59 @@
 import streamlit as st
 import pandas as pd
-import datetime
 
 st.set_page_config(page_title="Club Bolívar - RPE", page_icon="⚽", layout="centered")
 
-# --- ESCUDO Y TÍTULO ---
-# Cambiado a un servidor de imágenes ultra estable para que cargue sin problemas
+# --- ESCUDO NATIVO Y CENTRADO ---
+# Se conecta de manera directa con el archivo que subiste a tu propio repositorio
 url_escudo = "https://raw.githubusercontent.com/walterpfnal-max/carga-bol-var/main/escudo.png"
 
-col1, col2 = st.columns([1, 4])
-with col1:
-    st.image(url_escudo, width=90)
-with col2:
-    st.title("Club Bolívar")
-    st.subheader("Control de Carga Interna (RPE)")
+# Estructura de columnas para centrar y dar espacio al escudo en grande
+col_izq, col_centro, col_der = st.columns([1, 2, 1])
+with col_centro:
+    st.image(url_escudo, use_container_width=True)
+
+# Títulos del Club Centrados
+st.markdown("<h1 style='text-align: center;'>Club Bolívar</h1>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: #85C1E9;'>Control de Carga Interna (RPE)</h3>", unsafe_allow_html=True)
 
 st.markdown("---")
 
 # --- REGISTRO DIARIO ---
 st.write("### 📋 Registro Diario de Sesión")
 
-# 👇 ¡AQUÍ MODIFICAS TU LISTA REAL! 
-# Borra estos nombres o añade los que te falten. 
-# Recuerda poner cada nombre entre comillas y separados por una coma (,).
 plantel_bolivar = [
     "Carlos Lampe",
-    "Diego mendez",
+    "Diego Mendez",
     "Leonel Justiniano", 
-    "juan jose lopez", 
-    "santiago echeverria", 
+    "Juan Jose Lopez", 
+    "Santiago Echeverria", 
     "Patito Rodríguez",
     "Jesús Sagredo",
     "José Sagredo",
-    "xavier arreaga",
+    "Xavier Arreaga",
     "Luis Paz",
-    "Fernando mena",
+    "Escleizon Freita",
     "Ervin Vaca",
-    "escleison freita",
+    "Carlos amelgar",
     "Lucas Chávez",
-    "carlos melgar",
-    "robson matheus",
-    "erwin saavedra",
-    "martin cauteruccio",
-    "dorni romero",
-    "Jhon garcia",
-    "carlos sejas",
-    "cristian lopez",
-    "jhon velazquez",
-    "jesus velasquez",
-    "matias galindo",
-    "heiden butron",
+    "Robson Matheus",
+    "Ervin Saavedra",
+    "Martin Cauteruccio",
+    "Dorni Romero",
+    "Jhon Garcia",
+    "Carlos Sejas",
+    "Anderson Ayhuana",
+    "Jhon Velasquez",
+    "Cristian Lopez",
+    "Jesus Velasquez",
+    "Heiden Butron",
+    "Matias Galindo",
 ]
 
 jugador = st.selectbox("Selecciona el Jugador:", sorted(plantel_bolivar))
 duracion = st.number_input("Duración de la sesión (minutos):", min_value=1, max_value=180, value=75, step=5)
 rpe = st.slider("RPE (Esfuerzo Percibido 0 al 10):", 0, 10, 5)
 
-# Cálculo automático de Unidades Arbitrarias
 carga = duracion * rpe
 
 if st.button("💾 Guardar Datos"):
