@@ -7,7 +7,7 @@ from datetime import datetime
 st.set_page_config(page_title="Club Bolívar - RPE", page_icon="⚽", layout="centered")
 
 # URL de tu Google Apps Script (Debe quedar exactamente así)
-WEBHOOK_URL = "https://script.google.com/macros/s/AKfycybyh7V7fAAn17L_ACuQ04Cg_Z-1kWIH8T1AaELuvAZ-LR8BGPH8_L2Kp51_NmT7B8lR5tQ/exec"
+WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyh7V7fAAni7L_ACuQ04Cg_Z-lkWIH8TiAAeLuvAZ-LR8BGPH8_L2Kp5i_Nm7T88lR5tQ/exec"
 
 # Encabezado de la App
 st.markdown("<h1 style='text-align: center;'>🔵 Club Bolívar 🔵</h1>", unsafe_allow_html=True)
